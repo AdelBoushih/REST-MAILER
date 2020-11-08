@@ -13,26 +13,24 @@ app.post('/' , async (req,res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user:  process.env.USER,
+            user: process.env.USERSs,
             pass: process.env.PASS
         }
       });
 
     let mailOptions = {
         from: req.body.from,
-        to: 'boushihadel96@gmail.com',
+        to: process.env.USER,
         subject: req.body.subject,
         text: req.body.message
     };      
 
-    try{
-            await transporter.sendMail(mailOptions, (info) => {
-                res.json('Email sent: ' + info.response);
-        });
-
-    }catch(err){
-        res.json({ message: err });
-    }
+    transporter.sendMail(mailOptions, (error,info) => {
+        if (error)
+            res.json({ message: error });
+        else
+            res.json('Email sent: ' + info.response);
+    });
     
 });
 
