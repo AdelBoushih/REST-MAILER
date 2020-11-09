@@ -23,10 +23,13 @@ app.post('/' , async (req,res) => {
       });
 
     let mailOptions = {
-        from: req.body.from,
+        from: req.body.email,
         to: process.env.USER,
         subject: req.body.subject,
-        text: req.body.message
+        html: "<b>Nom: </b> "+req.body.name+"<br/><br/>"+
+        "<b>Email: </b> "+req.body.email+"<br/><br/>"+
+        "<b>Objet: </b> "+req.body.subject+"<br/><br/>"+
+        "<b>Message: </b> "+req.body.message
     };      
 
     transporter.sendMail(mailOptions, (error,info) => {
