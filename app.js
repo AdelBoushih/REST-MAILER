@@ -13,7 +13,7 @@ app.post('/' , async (req,res) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.USERSs,
+            user: process.env.USERS,
             pass: process.env.PASS
         }
       });
