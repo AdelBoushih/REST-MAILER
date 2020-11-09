@@ -8,6 +8,10 @@ require('dotenv/config');
 app.use(cors());
 app.use(bodyparser.json());
 
+app.get('/' , (req,res) => {
+    res.send('Welcome to my API REST Mailer');
+})
+
 app.post('/' , async (req,res) => {
 
     let transporter = nodemailer.createTransport({
