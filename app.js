@@ -23,11 +23,11 @@ app.post('/' , async (req,res) => {
       });
 
     let mailOptions = {
-        from: req.body.email,
+        from: req.body.address,
         to: process.env.USER,
         subject: req.body.subject,
         html: "<b>Nom: </b> "+req.body.name+"<br/><br/>"+
-        "<b>Email: </b> "+req.body.email+"<br/><br/>"+
+        "<b>Email: </b> "+req.body.address+"<br/><br/>"+
         "<b>Objet: </b> "+req.body.subject+"<br/><br/>"+
         "<b>Message: </b> "+req.body.message
     };      
